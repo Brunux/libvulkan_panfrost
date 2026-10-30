@@ -93,9 +93,10 @@ The prebuilt `.deb` package installs into `/usr/local` (`/usr/local/lib/aarch64-
 sudo dpkg -i dist/mesa-vulkan-panfrost-v9_26.1.0-mt8192-lazyos1_arm64.deb
 ```
 
-### Verify Vulkan Driver Detection
+### Verify Vulkan Driver Detection & Graphics (Wayland + X11 WSI)
 ```bash
-VK_ICD_FILENAMES=/usr/local/share/vulkan/icd.d/panfrost_icd.aarch64.json vulkaninfo --summary
+vulkaninfo --summary
+vkcube
 ```
 
 ### Run `llama.cpp` Safely with `llama-vulkan`
@@ -132,4 +133,5 @@ To rebuild the driver and `.deb` package from upstream Mesa (`5a07217f034b3e50d8
 * [`bin/llama-vulkan`](bin/llama-vulkan) — OOM-protected Vulkan launcher wrapper (`choom -n 1000` + `VK_ICD_FILENAMES`).
 * [`icd/panfrost_icd.aarch64.json`](icd/panfrost_icd.aarch64.json) — Vulkan ICD manifest.
 * [`scripts/build-panvk-v9.sh`](scripts/build-panvk-v9.sh) — Automated build and `.deb` packaging script.
+* [`scripts/setup-aoe2-steam.sh`](scripts/setup-aoe2-steam.sh) — Automated Steam DepotDownloader + Box64 + Wine 9.22 WoW64 + DXVK setup script for Age of Empires II (2013 HD & 2019 DE).
 * [`docs/ARCHITECTURE_AND_OPTIMIZATIONS.md`](docs/ARCHITECTURE_AND_OPTIMIZATIONS.md) — Deep-dive engineering documentation.
