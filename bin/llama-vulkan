@@ -1,0 +1,5 @@
+#!/bin/sh
+# Wrapper to run llama.cpp binaries on Mali-G57 MC5 (PanVK v9 DRM) with OOM protection
+# so the Wayland/Swayfx desktop session is always protected.
+export VK_ICD_FILENAMES="/usr/local/share/vulkan/icd.d/panfrost_icd.aarch64.json"
+exec choom -n 1000 -- "$@"
